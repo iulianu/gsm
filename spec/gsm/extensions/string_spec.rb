@@ -20,6 +20,6 @@ describe String do
     it "should encode odd number of nibbles" do
       "12345".semi_octet_encode.should == "2143F5"
     end
-   end
+  end
 
 end

@@ -1,0 +1,14 @@
+The GSM gem aims to be a utility belt for working with the GSM protocol stack.
+
+Things you can do right now:
+
+Compose SMS messages, including concatenated (segmented, multipart) SMS.
+
+Compose OMA Client Provisioning documents and break them down into SMS.
+
+This gem does not take care of actually delivering SMSes. It will help you produce the actual octets of the desired SMS, which you can then post to your preferred SMS gateway via HTTP or SMPP or any other protocol.
+
+Future plans:
+* Support picture messages
+* Support WAP PUSH notifications
+

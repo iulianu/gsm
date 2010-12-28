@@ -2,6 +2,8 @@
 
 module GSM
   class MSISDN
+    attr_reader :number
+
     def initialize(number = nil)
       unless number.nil?
         @number = MSISDN.to_international_format(number)

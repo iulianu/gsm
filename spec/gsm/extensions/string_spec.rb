@@ -1,4 +1,5 @@
 # vim:ts=2:sw=2:et:
+require 'spec_helper.rb'
 
 describe String do
 

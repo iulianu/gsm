@@ -2,12 +2,11 @@
 
 require 'rubygems'
 require 'rake/gempackagetask'
-gem 'rspec', '>= 1.3.0'
-require 'spec/rake/spectask'
+gem 'rspec', '>= 2.0.0'
+require 'rspec/core/rake_task'
 
-Spec::Rake::SpecTask.new do |t|
-  t.libs << 'lib'
-  t.spec_opts = ["--color" ]
+RSpec::Core::RakeTask.new do |t|
+  t.rspec_opts = ["--color", "-I lib"]
 end
 
 PKG_VERSION='0.0.1'

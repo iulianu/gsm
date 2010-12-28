@@ -1,1 +1,1 @@
-require 'gsm'
+require 'gsm.rb'

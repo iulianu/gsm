@@ -24,7 +24,7 @@ module GSM
             GSM::SMS::ConcatenateUDH.new( concat_ref, 2, 1 ),
           ]
           available_octets = 140 - ud.udh_octets.size
-          payload_octets = data[ptr..(ptr + available_octets - 1)]
+          payload_octets = payload[ptr..(ptr + available_octets - 1)]
           ud.set_payload( payload_octets, payload_octets.size, :octets )
           ptr += payload_octets.size
           uds << ud
@@ -37,10 +37,8 @@ module GSM
           ud.udh[0].current_part = i + 1
         end
 
-        return uds
-
       else
-        ud = UserData.new
+        ud = GSM::SMS::UserData.new
         ud.set_payload(payload, payload.size, :octets)
         uds << ud
       end

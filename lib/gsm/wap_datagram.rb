@@ -23,6 +23,7 @@ module GSM
       data = @opts[:data]
       if wdp_udh.octets.size + data.size > 139
         # Concatenation needed
+        # TODO this logic is duplicated in TextMessage as well
         ptr = 0
         uds = []
         concat_ref = 0xA0

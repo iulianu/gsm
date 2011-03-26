@@ -3,6 +3,7 @@
 require 'rubygems'
 gem 'ruby-hmac'
 require 'hmac-sha1'
+gem 'wbxml'
 require 'gsm/wap_datagram'
 
 module GSM
@@ -63,21 +64,21 @@ module GSM
     end
 
     def body_octets
-      xml_to_wbxml( @xml )
+      WBXML.xml_to_wbxml( @xml )
     end
 
     def octets
        wsp_headers = oma_wsp_headers
-       wsp_pdu( 0x01, # Bogus TID
-                0x06, # PDU type PUSH
-                "\x1F" + # ValueLengthQuote
-                          wsp_headers.length.chr +
-                          wsp_headers,
-                body_octets )
+       ::GSM::WSPDatagram.new( 0x01, # Bogus TID
+                               0x06, # PDU type PUSH
+                               "\x1F" + # ValueLengthQuote
+                                 wsp_headers.length.chr +
+                                 wsp_headers,
+                               body_octets ).octets
     end
 
     def to_wap_datagram
-      MM4R::WapDatagram.new :recipient => @recipient,
+      ::GSM::WAPDatagram.new :recipient => @recipient,
                             :source_port => 9200,
                             :destination_port => 2948,
                             :data => octets
